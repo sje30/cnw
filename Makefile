@@ -1,5 +1,5 @@
 index.html: index.md Makefile
-	pandoc --standalone --mathml --toc -o index.html index.md
+	pandoc --standalone --mathjax --toc -o index.html index.md
 
 
 .PHONY: /tmp/cnw-2014.zip clean
