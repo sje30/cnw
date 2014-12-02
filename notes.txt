@@ -1,0 +1,20 @@
+wget http://www.izhikevich.org/publications/figure1.m
+wget http://www.izhikevich.org/publications/izhikevich.m
+wget http://www.izhikevich.org/publications/izhikevich.jpg
+
+
+## hh
+
+~/txt/cam/teaching/rpc/assigns/hh/myhh.m
+
+
+## Izhikevich
+
+2003 paper
+http://www.izhikevich.org/publications/spikes.htm
+
+2004 paper, figure 1:
+wget http://www.izhikevich.org/publications/figure1.m
+
+WTA2.m from Wilson ch6.
+
