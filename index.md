@@ -1,5 +1,5 @@
 ---
-title: Introduction to Comptuational Neuroscience
+title: Introduction to Computational Neuroscience
 author:
 author:
 - name: Stephen J Eglen
@@ -214,7 +214,7 @@ observe?
 Wilson (Chapter 14) shows how to model recurrent circuity found in
 areas such as CA3 of hippocampus.  256 neurons are reciprocally
 coupled with adjustable weights.  Several patterns have been stored
-transiently, and then weight $w_{ij}, w_{ji}$ between unit i and j is
+transiently, and then weights $w_{ij}, w_{ji}$ between unit i and j is
 set to 1 if both units i and j are above threshold (50 Hz).  (This is
 a form of **Hebbian plasticity**.)  For recall, we then add noise.
 
