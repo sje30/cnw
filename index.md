@@ -5,7 +5,7 @@ author:
 - name: Stephen J Eglen
   affiliation: University of Cambridge
   email: S.J.Eglen@damtp.cam.ac.uk
-date: 2014-12-02
+date: 2015-11-05
 ...
 
 
@@ -20,16 +20,16 @@ back the way we came.
 upstairs open til 16:00.
 - Consider pairing up with someone else if you want to focus on the
 science rather than difficulties of learning matlab; there is no time
-today to given a introduction to matlab.
+today to give an introduction to matlab.
 
 # Introduction
 
-This is the first time I've tried this, so be patient!  If nothing
+This is the second time I've tried this, so be patient!  If nothing
 else, in two hours I hope you get to see what you can do with simple
 computer models.
 
 Download these notes from
-[http://www.damtp.cam.ac.uk/user/sje30/cnw-2014.zip](http://www.damtp.cam.ac.uk/user/sje30/cnw-2014.zip)
+[http://www.damtp.cam.ac.uk/user/sje30/cnw-2015.zip](http://www.damtp.cam.ac.uk/user/sje30/cnw-2015.zip)
 and right-click to extract/unzip all the files.
 
 
@@ -49,7 +49,9 @@ integrate them numerically using Euler integration.
 
 $\frac{dx}{dt} = f(x,t)$
 
-$X_{n+1} = X_{n}+ h f(x,t)$
+$X_{n+1} = X_{n}+ h \frac{dx}{dt}$
+
+$X_{n+1} = X_{n}+ h f(X_{n}, nh)$
 
 Depending on the step-size h.
 
@@ -139,7 +141,7 @@ Read
 [the basic description](http://www.izhikevich.org/human_brain_simulation/Blue_Brain.htm#models%20of%20spiking%20neurons)
 and guess which is the real data.
 
-## The basic model.
+## The basic model
 ![http://www.izhikevich.org/publications/izhik.gif](http://www.izhikevich.org/publications/izhik.gif)
 
 
