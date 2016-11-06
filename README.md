@@ -5,3 +5,8 @@ workshop.  First held in 2014.
 
 Download this as a zip file to get all the files at once.
 
+## Handouts for the lab
+
+1. [index.html](https://cdn.rawgit.com/sje30/cnw/master/index.html)
+2. [Hodgkin Huxley Assignment notes](http://www.damtp.cam.ac.uk/user/sje30/teaching/r/spa3-2014.pdf)
+3. [Izhikevich 2004](http://www.izhikevich.org/publications/whichmod.pdf)
