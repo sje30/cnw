@@ -5,7 +5,7 @@ author:
 - name: Stephen J Eglen
   affiliation: University of Cambridge
   email: S.J.Eglen@damtp.cam.ac.uk
-date: 2015-11-05
+date: 2016-11-07
 ...
 
 
@@ -13,10 +13,10 @@ date: 2015-11-05
 
 # Prelim
 
-- Tick/add your name on the sign-up sheet.
+<!-- - Tick/add your name on the sign-up sheet. -->
 - In case of fire/emergency: nearest fire-exit is on basement level, walking
 back the way we came.
-- Break at 13:55-14:05; bathrooms outside; cafe in central core
+- Break at 12:55-13:05; bathrooms outside; cafe in central core
 upstairs open til 16:00.
 - Consider pairing up with someone else if you want to focus on the
 science rather than difficulties of learning matlab; there is no time
@@ -24,12 +24,11 @@ today to give an introduction to matlab.
 
 # Introduction
 
-This is the second time I've tried this, so be patient!  If nothing
+This is the third time I've tried this, so be patient!  If nothing
 else, in two hours I hope you get to see what you can do with simple
 computer models.
 
-Download these notes from
-[http://www.damtp.cam.ac.uk/user/sje30/cnw-2015.zip](http://www.damtp.cam.ac.uk/user/sje30/cnw-2015.zip)
+Download these notes from http://www.damtp.cam.ac.uk/user/sje30/cnw-2016.zip
 and right-click to extract/unzip all the files.
 
 
@@ -142,7 +141,8 @@ Read
 and guess which is the real data.
 
 ## The basic model
-![http://www.izhikevich.org/publications/izhik.gif](http://www.izhikevich.org/publications/izhik.gif)
+
+![http://www.izhikevich.org/publications/izhik.gif](izhik.gif)
 
 
 ## Exercise: Izhikevich
@@ -168,7 +168,7 @@ $\tau \frac{dE_1}{dt} = -E_1 + S(K_1 - 3E_2)$
 
 $\tau \frac{dE_2}{dt} = -E_2 + S(K_2 - 3E_1)$
 
-$S(x) = 100(x^2) / [120^2 + x^2$]
+$S(x) = [ 100(x^2) / (120^2 + x^2) ]_+$
 
 
 
