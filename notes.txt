@@ -1,9 +1,13 @@
+
+
 wget http://www.izhikevich.org/publications/figure1.m
 wget http://www.izhikevich.org/publications/izhikevich.m
 wget http://www.izhikevich.org/publications/izhikevich.jpg
 
 
 ## hh
+
+increase I from 0.1 to somewhere 6-7 to get spiking.
 
 ~/txt/cam/teaching/rpc/assigns/hh/myhh.m
 
@@ -16,5 +20,11 @@ http://www.izhikevich.org/publications/spikes.htm
 2004 paper, figure 1:
 wget http://www.izhikevich.org/publications/figure1.m
 
-WTA2.m from Wilson ch6.
+WTA2.m from Wilson ch6.  The initial conditions are such that the
+first unit has activity 1 and the second one has activity 0.
 
+Handouts to prepare:
+
+cnw.pdf (or HTML)
+Izhikevich paper (2004)
+assignment 3
