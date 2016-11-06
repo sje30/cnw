@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="dcterms.date" content="2016-11-07">
+  <title>Introduction to Computational Neuroscience</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="/Users/stephen/txt/t/pandoc-templates/marked/kultiad-serif.css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<header>
+<h3 class="date">2016-11-07</h3>
+
+<h1 class="title">Introduction to Computational Neuroscience</h1>
+
+
+<h2 class="author">Stephen J Eglen</h2>
+<p class="affilation"><em>University of Cambridge</em></p>
+
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#prelim">Prelim</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#background-maths">Background maths</a><ul>
+<li><a href="#euler-integration">Euler integration</a></li>
+<li><a href="#trappenberg-example-appendix-b">Trappenberg example (Appendix B)</a></li>
+<li><a href="#exercise-numerical-integration">Exercise: numerical integration</a></li>
+</ul></li>
+<li><a href="#hodgkin-huxley-model">Hodgkin-Huxley model</a><ul>
+<li><a href="#reminder-of-the-biology">Reminder of the biology</a></li>
+<li><a href="#reminder-of-the-mathematics">Reminder of the mathematics</a></li>
+<li><a href="#matlab">Matlab</a></li>
+<li><a href="#exercises">Exercises</a></li>
+</ul></li>
+<li><a href="#izhikevich-models">Izhikevich models</a><ul>
+<li><a href="#the-basic-model">The basic model</a></li>
+<li><a href="#exercise-izhikevich">Exercise: Izhikevich</a></li>
+</ul></li>
+<li><a href="#coupling-two-neurons">Coupling two neurons</a><ul>
+<li><a href="#winner-take-all-wta-network.">Winner-take-all (WTA) network.</a><ul>
+<li><a href="#exercises-1">Exercises</a></li>
+</ul></li>
+<li><a href="#coupling-inhibitory-neurons-part-ii.">Coupling inhibitory neurons, part II.</a><ul>
+<li><a href="#exercises-2">Exercises</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#learning-patterns">Learning patterns</a><ul>
+<li><a href="#exercises-3">Exercises</a></li>
+</ul></li>
+<li><a href="#closing-comments">Closing comments</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+
+
+
+<h1 id="prelim">Prelim</h1>
+<!-- - Tick/add your name on the sign-up sheet. -->
+<ul>
+<li>In case of fire/emergency: nearest fire-exit is on basement level, walking back the way we came.</li>
+<li>Break at 12:55-13:05; bathrooms outside; cafe in central core upstairs open til 16:00.</li>
+<li>Consider pairing up with someone else if you want to focus on the science rather than difficulties of learning matlab; there is no time today to give an introduction to matlab.</li>
+</ul>
+<h1 id="introduction">Introduction</h1>
+<p>This is the third time I’ve tried this, so be patient! If nothing else, in two hours I hope you get to see what you can do with simple computer models.</p>
+<p>Download these notes from http://www.damtp.cam.ac.uk/user/sje30/cnw-2016.zip and right-click to extract/unzip all the files.</p>
+<p>Matlab is one of the most popular computational environments around. (But there are alternatives that I prefer … <a href="http://r-project.org">R</a>, <a href="http://julialang.org">julia</a>, <a href="http://python.org">python</a>.) We will use it today for expedience.</p>
+<h1 id="background-maths">Background maths</h1>
+<h2 id="euler-integration">Euler integration</h2>
+<p>Given some differential equation for how x changes over time and so initial condition (i.e. x = some value at time t = 0), we can integrate them numerically using Euler integration.</p>
+<p><span class="math inline">\(\frac{dx}{dt} = f(x,t)\)</span></p>
+<p><span class="math inline">\(X_{n+1} = X_{n}+ h \frac{dx}{dt}\)</span></p>
+<p><span class="math inline">\(X_{n+1} = X_{n}+ h f(X_{n}, nh)\)</span></p>
+<p>Depending on the step-size h.</p>
+<h2 id="trappenberg-example-appendix-b">Trappenberg example (Appendix B)</h2>
+<p>Solve differential equation</p>
+<p><span class="math inline">\(\frac{dx}{dt} = t -x + 1\)</span></p>
+<p>with initial conditions <span class="math inline">\(x(0) = 1\)</span>.</p>
+<p>Known solution:</p>
+<p><span class="math inline">\(x(t) = \exp(-t) + t\)</span></p>
+<p>We will open <a href="euler1.m" class="uri">euler1.m</a> in matlab and then run the script by typing “euler1” at the prompt (or you can hit the button titled “Run selection”).</p>
+<h2 id="exercise-numerical-integration">Exercise: numerical integration</h2>
+<ul>
+<li><p>Use the zoom buttons on the graph to see how close the approximation is, especially for t&lt;2.</p></li>
+<li><p>Extend the maximal time from 5 to 20. Does it still work with h=0.2?</p></li>
+<li><p>See what happens when you vary the step size in the solution (try values of h between 0.01 and 5.) with larger solutions.</p></li>
+<li><p>Try solving another differential equation with x(0)=0: <!-- ack: catam 1b --> <span class="math inline">\(\frac{dx}{dt} = -10x + 8 \exp(-2t)\)</span>. Try values of h between 0.0001 and 0.5</p></li>
+</ul>
+<h1 id="hodgkin-huxley-model">Hodgkin-Huxley model</h1>
+<h2 id="reminder-of-the-biology">Reminder of the biology</h2>
+<p>Its all in the channels!</p>
+<p><a href="http://tinyurl.com/matthews-channel" class="uri">http://tinyurl.com/matthews-channel</a></p>
+<h2 id="reminder-of-the-mathematics">Reminder of the mathematics</h2>
+<p>See <a href="http://www.damtp.cam.ac.uk/user/sje30/teaching/r/spa3-2014.pdf">assignment 3</a></p>
+<p>Matlab has built-in functions for numerical integration of ODEs, e.g. ode23, ode45, ode23s. We will use them here so that we focus on the problem and not the numerics.</p>
+<h2 id="matlab">Matlab</h2>
+<ol style="list-style-type: decimal">
+<li><a href="hhode.m" class="uri">hhode.m</a> stores the “science”</li>
+<li><a href="myhh.m" class="uri">myhh.m</a> stores the “numerics”</li>
+</ol>
+<p>Run with default I=0.1 and then compare with I=10.</p>
+<h2 id="exercises">Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Can you find the critical value of I where you first get a spike generated?</p></li>
+<li><p>Can you work out the units on I (check equation 1 and Table 1 of spa3)?</p></li>
+<li><p>Estimate the firing rate (in Hz) for the model as you vary I from 0 to 500. Can you plot a graph of it? e.g. see <a href="hh_plotrate.m" class="uri">hh_plotrate.m</a> for a template.</p></li>
+<li><p>(Advanced) Apply a pulse of negative current with I=-50 for 5 ms followed by I=0 and describe what happens.</p></li>
+<li><p>Try other manipulations, e.g. what if you set dh/dt to zero? What would this simulate?</p></li>
+</ol>
+<h1 id="izhikevich-models">Izhikevich models</h1>
+<p>Let’s simplify the models as far as we can; we are going to use the simplification due to Izhikevich.</p>
+<p>Read <a href="http://www.izhikevich.org/human_brain_simulation/Blue_Brain.htm#models%20of%20spiking%20neurons">the basic description</a> and guess which is the real data.</p>
+<h2 id="the-basic-model">The basic model</h2>
+<div class="figure">
+<img src="izhik.gif" alt="http://www.izhikevich.org/publications/izhik.gif" />
+<p class="caption">http://www.izhikevich.org/publications/izhik.gif</p>
+</div>
+<h2 id="exercise-izhikevich">Exercise: Izhikevich</h2>
+<ol style="list-style-type: decimal">
+<li><p><a href="izh.m" class="uri">izh.m</a> has the basic code for one of the models. Try to adapt using parameters a,b,c,d to generate each of the plots from above. e.g. how can you make a chattering cell (CH)?</p></li>
+<li><p>Explore <a href="figure1.m" class="uri">figure1.m</a>. This regenerates figure 1 of the <a href="http://www.izhikevich.org/publications/whichmod.pdf">2004 paper</a>. See if you can follow in the code how the model is adapted in each case.</p></li>
+</ol>
+<h1 id="coupling-two-neurons">Coupling two neurons</h1>
+<h2 id="winner-take-all-wta-network.">Winner-take-all (WTA) network.</h2>
+<p>Eqn 6.18 from Wilson (1999). Couple two neurons that inhibit each other.</p>
+<p><span class="math inline">\(\tau \frac{dE_1}{dt} = -E_1 + S(K_1 - 3E_2)\)</span></p>
+<p><span class="math inline">\(\tau \frac{dE_2}{dt} = -E_2 + S(K_2 - 3E_1)\)</span></p>
+<p><span class="math inline">\(S(x) = [ 100(x^2) / (120^2 + x^2) ]_+\)</span></p>
+<p>We will first run the script <a href="WTA2.m" class="uri">WTA2.m</a> with input to neuron 1 = 60 and input to neuron 2 = 70. We will examine the phase plane.</p>
+<h3 id="exercises-1">Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>When the input to both cells is equal, what is the critical value when one neurons dominates? Start with input to both cells equal to 20.</p></li>
+<li><p>Examine what happens when input to both neurons is 100. Run it several times and see which one wins. Can you explain (and then test) your result?</p></li>
+</ol>
+<h2 id="coupling-inhibitory-neurons-part-ii.">Coupling inhibitory neurons, part II.</h2>
+<p>Wilson (Chapter 12) shows how pairs of neurons coupled with reciprocal inhibition can generate out-of-phase firing (not WTA).</p>
+<p>Try <a href="IPSPinteractions.m" class="uri">IPSPinteractions.m</a> with <span class="math inline">\(I_1 = 1.1, I_2= 1.0, k=5\)</span>. We should see out-of-phase spiking.</p>
+<h3 id="exercises-2">Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>Edit the script IPSPinteractions.m so that TauSyn is set to 2 ms (rather than 1 ms) and repeat with above parameters. What do you observe?</p></li>
+<li><p>As above, but with <span class="math inline">\(I_1 = 1.05\)</span>; now what happens?</p></li>
+<li><p>(Advanced) investigate the <a href="Clione.m" class="uri">Clione.m</a> script. These are two coupled neurons that are mutually inhibitory, but with each neuron modelled by 4 ODEs (eq 12.18, p191). Importantly here there is only external input to one neuron between 2ms and 3ms. After starting the script, set current strength to 0.5 and inhibitory conductance to 9.</p></li>
+</ol>
+<h1 id="learning-patterns">Learning patterns</h1>
+<p>Wilson (Chapter 14) shows how to model recurrent circuity found in areas such as CA3 of hippocampus. 256 neurons are reciprocally coupled with adjustable weights. Several patterns have been stored transiently, and then weights <span class="math inline">\(w_{ij}, w_{ji}\)</span> between unit i and j is set to 1 if both units i and j are above threshold (50 Hz). (This is a form of <strong>Hebbian plasticity</strong>.) For recall, we then add noise.</p>
+<p>For this exercise, you will need to be in <a href="Chapter14" class="uri">Chapter14</a> folder. Simply <code>cd Chapter14</code> in the matlab prompt.</p>
+<h2 id="exercises-3">Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Run <code>CA3memory.m</code> and test all four patterns.</p></li>
+<li><p>Try adding your own pattern, either similar to the others, or distinct, using <code>CA3learning.m</code>. When you start, you get to add 32 pixels to a grid (current pixel number is listed at the top of the figure – it is a basic, but useful, image editor!)</p></li>
+</ol>
+<h1 id="closing-comments">Closing comments</h1>
+<ol style="list-style-type: decimal">
+<li><p>If you wish to learn more, we have some comp neuro lectures next term.</p></li>
+<li><p>Questions?</p></li>
+</ol>
+<h1 id="references">References</h1>
+<p>Much of this material came from some of the following sources. Note that Wilson’s book is freely available as pdf.</p>
+<p>Dayan P, Abbott LF (2001) Theoretical Neuroscience: Computational and Mathematical Modeling of Neural Systems. MIT Press.</p>
+<p>Izhikevich EM (2004) Which model to use for cortical spiking neurons? IEEE Trans Neural Netw 15:1063–1070.</p>
+<p>Trappenberg T (2010) Fundamentals of Computational Neuroscience. 2nd edition. OUP. https://web.cs.dal.ca/~tt/fcns/</p>
+<p>Wilson HR (1999) Spikes decisions and actions. OUP. http://cvr.yorku.ca/webpages/wilson.htm#book (including PDF of the book).</p>
+<!--
+Notes to self:
+
+--mathml not working on windows; mathjax might be better.
+
+
+Odd that it needs space
+$ v(t) = v_0 + \frac{1}{2}at^2$ 
+ -->
+</body>
+</html>
