@@ -51,21 +51,19 @@ tex:	clean $(TEX)
 	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -s -S --latex-engine=pdflatex --template=$(PREFIX)/templates/latex.template --filter pandoc-citeproc --csl=$(PREFIX)/csl/$(CSL).csl --bibliography=$(BIB) -o $@ $<
 
 clean:
-	rm -f *.html *.pdf *.tex
+	rm -f *.html *.pdf *.tex *~
 
 
 ## index.html: index.md Makefile
 ## 	pandoc --standalone --mathjax --toc -o index.html index.md
 
 
-.PHONY: /tmp/cnw-2014.zip clean
+.PHONY: /tmp/cnw-2016.zip clean
 
-/tmp/cnw-2014.zip:
-	rm -fr /tmp/cnw-2014.zip
-	cd ..; zip -r /tmp/cnw-2014.zip cnw-2014 -x cnw-2014/.git\* cnw-2014/euler2.m
-	chmod o+r /tmp/cnw-2014.zip
-	scp /tmp/cnw-2014.zip sje30@rgc:web/
+/tmp/cnw-2016.zip:
+	rm -f /tmp/cnw-2016.zip
+	cd ..; zip -r /tmp/cnw-2016.zip cnw-2014 -x cnw-2014/.git\* cnw-2014/euler2.m cnw-2014/feedback.txt cnw-2014/notes.txt
+	chmod o+r /tmp/cnw-2016.zip
+	scp /tmp/cnw-2016.zip sje30@rgc:web/
 
 
-clean:
-	rm -f *~
