@@ -1,5 +1,5 @@
 # Simple example of Euler integration
-h = 0.01;                               # time-step
+#h = 0.01;                               # time-step
 tmax = 5;                               # max t value
 init = 1;                               # initial condition
 
@@ -18,14 +18,14 @@ end
 
 
 # Now plot results and compare with true solution
-using Plots
-pyplot()
-plot(t, x)
-##hold on
-xtrue = @. exp(-t) + t;                    # true solution
-plot!(t, xtrue)
-xlabel!('time (s)'); ylabel('x');
-legend('Euler', 'True', 'Location', 'NorthWest')
-##hold off
 
-## todo - add x/ylabels and legends
+fig, axes = subplots(1,1,figsize=(5,3))
+xtrue = @. exp(-t) + t;                    # true solution
+plot(t, xtrue, label="True")
+plot(t, x, label="Euler")
+xlabel("time (s)"); ylabel("x");
+legend(loc=2)
+
+
+
+## h comes from enclosing environement.
