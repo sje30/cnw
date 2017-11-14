@@ -12,7 +12,7 @@ function WTA2(k1, k2)
     X[1,1] = 1.0; X[2,1] = 0.0;
     Wt2 = [0 .5 .5 1];  #Second set of RK weights
     rkIndex = [1 1 2 3];
-    K1= k1; K2=k1
+    K1= k1; K2=k2
     S(x) = x>0 ? 100x^2 / (120^2 +x^2):0
     K = zeros(2,length(rkIndex))
     for T = 2:Last
@@ -27,7 +27,7 @@ function WTA2(k1, k2)
         newx = X[:, T-1] + sum((Weights.*K)',1)'/6
         X[:, T] = newx
     end
-    X
+    Time, X
 end
 
 ## using Plots
