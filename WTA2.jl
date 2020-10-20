@@ -8,12 +8,12 @@ function WTA2(k1, k2)
     WTS = [1 2 2 1];  #Runge-Kutta Coefficient weights
     X = zeros(Total_Equations, Int(Last))
     K = zeros(Total_Equations, length(WTS))
-    Weights = repmat(WTS, 2,1)
+    Weights = repeat(WTS, 2,1)
     X[1,1] = 1.0; X[2,1] = 0.0;
     Wt2 = [0 .5 .5 1];  #Second set of RK weights
     rkIndex = [1 1 2 3];
     K1= k1; K2=k2
-    S(x) = x>0 ? 100x^2 / (120^2 +x^2):0
+    S(x) = x>0 ? 100x^2 / (120^2 +x^2) : 0
     K = zeros(2,length(rkIndex))
     for T = 2:Last
         for rk = 1:4  #Fourth Order Runge-Kutta
@@ -24,7 +24,7 @@ function WTA2(k1, k2)
             K[1, rk] = DT/Tau*(-XH[1] + S(PSP1))
             K[2, rk] = DT/Tau*(-XH[2] + S(PSP2))
         end
-        newx = X[:, T-1] + sum((Weights.*K)',1)'/6
+        newx = X[:, T-1] + sum((Weights.*K)',dims=1)'/6
         X[:, T] = newx
     end
     Time, X
