@@ -1,0 +1,13 @@
+[deps]
+DSP = "717857b8-e6f2-59f4-9121-6e50c889abd2"
+ImageFiltering = "6a3955dd-da59-5b1f-98d4-e7296123deb5"
+ImageMagick = "6218d12a-5da1-5696-b52f-db25d2ecc6d1"
+ImageView = "86fae568-95e7-573e-a6b2-d8a6b900c9ef"
+Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
+JLD = "4138dd39-2aa7-5051-a626-17a0bb65d9c8"
+PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+TestImages = "5e47fb64-e119-507b-a336-dd2b206d9990"
+
+[compat]
+julia = "1.5"
