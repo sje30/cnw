@@ -67,3 +67,6 @@ clean:
 	scp /tmp/cnw-2016.zip sje30@rgc:web/
 
 
+
+cnw.ipynb: cnw.md
+	jupytext --to notebook cnw.md
