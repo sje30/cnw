@@ -10,13 +10,11 @@ function IPSPinteractions(Stim1, Stim2, ES, TauSyn)
     WTS = [1 2 2 1];  #Runge-Kutta Coefficient weights
 
     # Predefine X, K and WTS for speed
-    X = Array{Float64}(Total_Neurons, Last)
-    K = Array{Float64}(Total_Neurons, 4)
-    Weights = Array{Float64}(Total_Neurons, 4)
+    X = Array{Float64,2}(undef, Total_Neurons, Last)
+    K = Array{Float64,2}(undef, Total_Neurons, 4)
+    Weights = Array{Float64,2}(undef, Total_Neurons, 4)
 
     for NU = 1:Total_Neurons;  #Initialize
-        X[NU, :] = zeros(1, Last);  #Vector to store response of Neuron #1
-        K[NU, :] = zeros(1, 4);  #Runge-Kutta terms	
         Weights[NU, :] = WTS;  #Make into matrix for efficiency in main loop
     end
     X[1, 1] = -0.754;  #Initial conditions here if different from zero
@@ -52,12 +50,12 @@ function IPSPinteractions(Stim1, Stim2, ES, TauSyn)
         K[8, rk] = DT/TauSyn*(-XH[8] + XH[6])
 
      end
-        X[:, T] = X[:, T-1] + sum((Weights.*K)', 1)'/6
+        X[:, T] = X[:, T-1] + sum((Weights.*K)', dims=1)'/6
     end
 
 #=
     ### PlotlyJS ###
-    trace1 = PlotlyJS.scatter(;x=Time, y=100*X[1, :], mode="lines", line_color="red")
+    trace1 = PlotlyJS.scatter(;x=Time, y=100*X[1, : ], mode="lines", line_color="red")
     trace2 = PlotlyJS.scatter(;x=Time, y=100*X[3, :], mode="lines", line_color="blue")
     layout = PlotlyJS.Layout(title="Solutions", xlabel="Time (ms)", ylabel="Voltage (mV)")
     p1 = PlotlyJS.plot([trace1, trace2], layout)
