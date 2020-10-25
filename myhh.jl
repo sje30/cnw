@@ -4,7 +4,7 @@ include("hhode.jl")
           
 u0 = [-65.0;0.0529;0.3177;0.5961];
 tspan = (0.0,500.0)
-p = [10]                       # input current
+##p = [200]                       # input current, defined from calling script.
 prob = ODEProblem(hhode!,u0,tspan,p);
 
 sol = solve(prob,Vern7());
