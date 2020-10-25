@@ -1,5 +1,9 @@
+using Pkg
+Pkg.activate(".")
+Pkg.instantiate()
 using OrdinaryDiffEq
-using PyPlot
+using Plots
+
 include("hhode.jl")
           
 u0 = [-65.0;0.0529;0.3177;0.5961];
@@ -10,22 +14,9 @@ prob = ODEProblem(hhode!,u0,tspan,p);
 sol = solve(prob,Vern7());
 
 
-fig, axes = subplots(2,2,figsize=(10,10))
-ax=axes[1,1]
-ax.plot(sol.t,sol[1,:])
-ax.set_xlabel("t(ms)")
-ax.set_ylabel("V(mv)")
-
-ax=axes[1,2]
-ax.plot(sol.t,sol[2,:])
-ax.set_title("m")
-
-ax=axes[2,1]
-ax.plot(sol.t,sol[3,:])
-ax.set_title("n")
-
-ax=axes[2,2]
-ax.plot(sol.t,sol[4,:])
-ax.set_title("h")
-fig.subplots_adjust(hspace=0.35);
-show()
+l = @layout [a b; c d]
+p1 = plot(sol.t, sol[1,:], xlabel="t (ms)", ylabel= "V (mv)", legend=false);
+p2 = plot(sol.t, sol[2,:], xlabel="t (ms)", ylabel= "m", legend=false);
+p3 = plot(sol.t, sol[3,:], xlabel="t (ms)", ylabel= "n", legend=false);
+p4 = plot(sol.t, sol[4,:], xlabel="t (ms)", ylabel= "h", legend=false);
+plot(p1, p2, p3, p4, layout = l)
