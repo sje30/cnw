@@ -1,8 +1,8 @@
-function hhode(t,y,dy)
+function hhode!(dy, y, p, t)
     v = y[1]; m = y[2]; n = y[3]; h = y[4];
 
     # Some constants of the system.
-    #I = 0.1; #This should possibly be an input argument
+    I = p[1]
     gna = 1200; gk=360; gl=3;
     El=-54.387; Ek=-77.0; Ena=100.0;
     C = 10;
