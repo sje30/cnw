@@ -2,7 +2,7 @@
 ## Adapted from code for Figure 1 of 2004 paper
 ## available at http://www.izhikevich.org/publications/figure1.m
 
-using PyPlot
+using Plots
 
 function izh(;a=0.02,b=0.2, c=-65.0, d=6.0)
     #a=0.02; b=0.2;  c=-65;  d=6;
@@ -27,12 +27,11 @@ function izh(;a=0.02,b=0.2, c=-65.0, d=6.0)
         end;
         push!(uu,u);
     end;
-    fig, axes = subplots(1,1,figsize=(5,3))
-    plot(tspan,VV);
-    plot([0,T1,T1,tspan[end]],-90.0 .+ [0,0,10,10])
-    title("(A) tonic spiking")
-    xlim([0,tspan[end]])
-    ylim([-90,30])
+    plot(tspan,VV, title="(A) tonic spiking",
+         legend=false,
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,tspan[end]],-90.0 .+ [0,0,10,10])
+
 end
 
 ##savefig("izhplot")
