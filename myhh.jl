@@ -1,9 +1,3 @@
-using Pkg
-Pkg.activate(".")
-Pkg.instantiate()
-using OrdinaryDiffEq
-using Plots
-
 include("hhode.jl")
           
 u0 = [-65.0;0.0529;0.3177;0.5961];

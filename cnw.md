@@ -16,6 +16,9 @@ jupyter:
 
 # Prelim
 
+**This year the session is online... we will take a ten minute break in
+the middle.**
+
 <!-- - Tick/add your name on the sign-up sheet. -->
 - In case of fire/emergency: nearest fire-exit is on basement level, walking
 back the way we came.
@@ -27,27 +30,22 @@ today to give an introduction to matlab.
 
 # Introduction
 
-This is the third time I've tried this, so be patient!  If nothing
-else, in two hours I hope you get to see what you can do with simple
-computer models.  New for this year is that we are trying it in Julia online!
-
-Download these notes from http://www.damtp.cam.ac.uk/user/sje30/cnw-2016.zip
-and right-click to extract/unzip all the files.
+This is the fourth time I've tried this, and things keep changing, so
+be patient!  If nothing else, in two hours I hope you get to see what
+you can do with simple computer models.
 
 # Getting started
 
-Visit [juliabox.com](http://juliabox.com) and login with Google or github.
-
-Sync the files from http://github.com/sje30/cnw
-
-Open the Console and then type
-
-    julia
-    Pkg.add("OrdinaryDiffEq")
-
+Today we will be using mybinder.org to host our session in the cloud.
+This means you don't need to install anything, but it may be a bit slower.
 
 ```julia
-using PyPlot
+using Pkg
+Pkg.activate(".")
+Pkg.instantiate()
+using OrdinaryDiffEq
+using Plots
+using Statistics
 ```
 
 <!-- #region -->
@@ -129,8 +127,9 @@ generated?
 2. Can you work out the units on I (check equation 1 and Table 1 of spa3)?
 
 3. Estimate the firing rate (in Hz) for the model as you vary I from 0
-   to 500.  Can you plot a graph of it?  e.g. see
-   [hh_plotrate.m](hh_plotrate.m) for a template.
+   to 500.  Can you plot a graph of it?  
+   
+   <!-- e.g. see    [hh_plotrate.m](hh_plotrate.m) for a template. -->
 
 4. (Advanced) Apply a pulse of negative current with I=-50
    for 5 ms followed by I=0 and describe what happens.
@@ -170,7 +169,8 @@ and guess which is the real data.
 <!-- #endregion -->
 
 ```julia
-a=0.02; b=0.2;  c=-65;  d=6; include("izh.jl")
+include("izh.jl")
+izh(a=0.02, b=0.2, c=-65,  d=6K)
 ```
 
 ### All 20 conditions
@@ -197,7 +197,7 @@ $S(x) = [ 100(x^2) / (120^2 + x^2) ]_+$
 
 
 
-We will first run the script [WTA2.m](WTA2.m) with input to neuron 1 =
+We will first run the script [WTA2.jl](WTA2.jl) with input to neuron 1 =
 60 and input to neuron 2 = 70.  We will examine the phase plane.
 <!-- #endregion -->
 
@@ -250,5 +250,4 @@ fig, axes = subplots(1,1,figsize=(5,3))
 plot(time, X[1,:], label="E1")
 plot(time, X[3,:], label="E3")
 legend(loc=2)
-
 ```
