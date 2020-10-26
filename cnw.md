@@ -111,7 +111,7 @@ Run with default I=0.1 and then compare with I=10.
 <!-- #endregion -->
 
 ```julia
-include("myhh.jl")
+include("hhode.jl")
 plot_hh(i=1.0)
 ```
 
@@ -166,7 +166,7 @@ and guess which is the real data.
 
 ```julia
 include("izh.jl")
-izh(a=0.02, b=0.2, c=-65,  d=6K)
+izh(a=0.02, b=0.2, c=-65,  d=6)
 ```
 
 ### All 20 conditions
@@ -202,12 +202,9 @@ include("WTA2.jl")
 ```
 
 ```julia
+using Plots
 time, res = WTA2(60.0, 70.0)
-fig, axes = subplots(1,1,figsize=(5,3))
-plot(time, res[1,:], label="E1")
-plot(time, res[2,:], label="E2")
-legend(loc=2)
-xlabel("Time"); ylabel("Firing rate (Hz)")
+plot(time, res', label=["E1" "E2"],	xlabel = "Time", ylabel="Firing rate (Hz)")
 ```
 
 ### Exercises
@@ -240,10 +237,6 @@ observe?
 
 ```julia
 include("IPSP.jl")
-
 time, X = IPSPinteractions(1.1, 1.0, 5.0, 1.0)
-fig, axes = subplots(1,1,figsize=(5,3))
-plot(time, X[1,:], label="E1")
-plot(time, X[3,:], label="E3")
-legend(loc=2)
+plot(time, X[ [1, 3], :]', label=["E1" "E3"], legend=:topleft)
 ```
