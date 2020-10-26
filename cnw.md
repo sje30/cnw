@@ -103,21 +103,16 @@ Its all in the channels!
 See [assignment 3](http://www.damtp.cam.ac.uk/user/sje30/teaching/r/spa3-2014.pdf)
 
 
-Matlab has built-in functions for numerical integration of ODEs,
-e.g. ode23, ode45, ode23s.  We will use them here so that we focus on
-the problem and not the numerics.
+Julia has built-in functions for efficient numerical integration of
+ODEs.  We will use them here so that we focus on the problem and not the
+numerics.
     
-
-## Matlab
-
-1. [hhode.jl](hhode.jl) stores the "science"
-2. [myhh.jl](myhh.jl) stores the "numerics"
-
 Run with default I=0.1 and then compare with I=10.
 <!-- #endregion -->
 
 ```julia
-I=10.0; include("myhh.jl")
+include("myhh.jl")
+plot_hh(i=1.0)
 ```
 
 ## Exercises
