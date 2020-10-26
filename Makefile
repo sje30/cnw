@@ -63,7 +63,7 @@ clean:
 ## 	pandoc --standalone --mathjax --toc -o index.html index.md
 
 
-.PHONY: /tmp/cnw-2016.zip clean
+.PHONY: /tmp/cnw-2016.zip clean open-nb
 
 /tmp/cnw-2016.zip:
 	rm -f /tmp/cnw-2016.zip
@@ -73,3 +73,5 @@ clean:
 
 
 
+open-nb:
+	jupyter notebook cnw.ipynb
