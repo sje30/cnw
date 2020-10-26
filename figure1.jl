@@ -8,6 +8,13 @@ using Statistics                # for the mean function
 
 #(A) tonic spiking
 
+function plot_ts(t,v,title)
+    plot(t,v, title=title,
+         titlefontsize=10,
+         legend=false, axis=nothing,
+         xlims=(0, t[end]), ylims=(-90,30));
+end
+
 function izh_a()
     a=0.02; b=0.2;  c=-65;  d=6;
     V=-70;  u=b*V;
@@ -31,9 +38,7 @@ function izh_a()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV, title="(A) tonic spiking",
-         legend=false, axis=nothing,
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(A) tonic spiking")
     plot!([0,T1,T1,tspan[end]],-90.0 .+ [0,0,10,10])
 end
 
@@ -61,9 +66,7 @@ function izh_b()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV, title="(B) phasic spiking",
-         legend=false, axis=nothing,
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(B) phasic spiking")
     plot!([0,T1,T1,tspan[end]],-90.0 .+ [0,0,10,10])
 end
 
@@ -92,9 +95,7 @@ function izh_c()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV, title="(C) tonic bursting",
-         legend=false, axis=nothing,
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(C) tonic bursting")
     plot!([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
 end
 
@@ -122,9 +123,7 @@ function izh_d()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,title="(D) phasic bursting",
-         legend=false, axis=nothing,
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV,"(D) phasic bursting")
     plot!([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
 end
 
@@ -153,9 +152,7 @@ function izh_e()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,    title="(E) mixed mode",
-         legend=false, axis=nothing,
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(E) mixed mode")
     plot!([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
 end
 
@@ -183,10 +180,7 @@ function izh_f()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         title="(F) spike freq. adapt",
-         legend=false, axis=nothing,
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(F) spike freq. adapt")
     plot!([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
 end
 
@@ -215,9 +209,7 @@ function izh_g()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,title="(G) Class 1 excitable",
-         legend=false, axis=nothing,
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV,"(G) Class 1 excitable")
     plot!([0,T1,tspan[end],tspan[end]],-90.0 .+[0,0,20,0])
 end
 
@@ -246,10 +238,7 @@ function izh_h()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,
-         title="(H) Class 2 excitable",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(H) Class 2 excitable")
     plot!([0,T1,tspan[end],tspan[end]],-90.0 .+[0,0,20,0])
 end
 
@@ -278,9 +267,7 @@ function izh_i()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,title="(I) spike latency",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(I) spike latency")
     plot!([0,T1,T1,T1 + 3,T1+3,tspan[end]],-90.0 .+[0,0,10,10,0,0])
 end
 
@@ -309,9 +296,7 @@ function izh_j()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing, title="(J) subthreshold osc.",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV,"(J) subthreshold osc.")
     plot!([0,T1,T1,T1+5,T1+5,tspan[end]],-90.0 .+[0,0,10,10,0,0])
     plot!(tspan[220:end],-10 .+ 20*(VV[220:end] .- mean(VV)));
 end
@@ -344,9 +329,7 @@ function izh_k()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,    title="(K) resonator",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(K) resonator")
     plot!([0,T1,T1,(T1+8),(T1+8),T2,T2,(T2+8),(T2+8),T3,T3,(T3+8),(T3+8),T4,T4,(T4+8),(T4+8),tspan[end]],-90.0 .+[0,0,10,10,0,0,10,10,0,0,10,10,0,0,10,10,0,0]);
 end
 
@@ -378,9 +361,7 @@ function izh_l()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing, title="(L) integrator",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(L) integrator")
     plot!([0,T1,T1,(T1+2),(T1+2),T2,T2,(T2+2),(T2+2),T3,T3,(T3+2),(T3+2),T4,T4,(T4+2),(T4+2),tspan[end]],-90.0 .+[0,0,10,10,0,0,10,10,0,0,10,10,0,0,10,10,0,0]);
 end
 
@@ -409,9 +390,7 @@ function izh_m()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,    title="(M) rebound spike",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV,"(M) rebound spike")
     plot!([0,T1,T1,(T1+5),(T1+5),tspan[end]], -85.0 .+ [0,0,-5,-5,0,0]);
 end
 
@@ -440,9 +419,7 @@ function izh_n()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,    title="(N) rebound burst",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV,"(N) rebound burst")
     plot!([0,T1,T1,(T1+5),(T1+5),tspan[end]],-85.0 .+ [0,0,-5,-5,0,0]);
 end
 
@@ -472,9 +449,7 @@ function izh_o()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,     title="(O) thresh. variability",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(O) thresh. variability")
     plot!([0,10,10,15,15,70,70,75,75,80,80,85,85,tspan[end]],
             -85.0 .+ [0,0,5,5,0,0,-5,-5,0,0,5,5,0,0]);
 end
@@ -505,10 +480,8 @@ function izh_p()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,
-         title="(P) bistability",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV, "(P) bistability")
+
     plot!([0,T1,T1,(T1+5),(T1+5),T2,T2,(T2+5),(T2+5),tspan[end]],-90.0 .+[0,0,10,10,0,0,10,10,0,0]);
 end
 
@@ -537,10 +510,7 @@ function izh_q()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,
-         title="(Q) DAP         ",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV,         "(Q) DAP         ")
     plot!([0,T1-1,T1-1,T1+1,T1+1,tspan[end]],-90.0 .+[0,0,10,10,0,0]);
 end
 
@@ -573,10 +543,8 @@ function izh_r()
         push!(uu,u);
         push!(II,I);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,    title="(R) accomodation",
-         xlims=(0, tspan[end]), ylims=(-90,30));
-    plot(tspan,II*1.5 .- 90.0);
+    plot_ts(tspan,VV, "(R) accomodation")
+    plot!(tspan,II*1.5 .- 90.0);
 end
 
 
@@ -603,9 +571,7 @@ function izh_s()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing, title="(S) inh. induced sp.",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV,  "(S) inh. induced sp.")
     plot!([0,50,50,250,250,tspan[end]], -80.0 .+ [0,0,-10,-10,0,0]);
 end
 
@@ -633,9 +599,7 @@ function izh_t()
         end;
         push!(uu,u);
     end;
-    plot(tspan,VV,
-         legend=false, axis=nothing,    title="(T) inh. induced brst.",
-         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot_ts(tspan,VV,"(T) inh. induced brst.")
     plot!([0,50,50,250,250,tspan[end]],
             -80.0 .+ [0,0,-10,-10,0,0]);
 end
