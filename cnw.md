@@ -84,7 +84,8 @@ typing Control and Enter on include line below.
 <!-- #endregion -->
 
 ```julia
-h=0.1; include("euler1.jl")
+include("euler1.jl")
+plot_euler1(h=0.1)
 ```
 
 <!-- #region -->

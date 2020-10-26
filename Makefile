@@ -1,3 +1,8 @@
+cnw.ipynb: cnw.md
+	jupytext --to notebook cnw.md
+
+
+
 ## Put this Makefile in your project directory---i.e., the directory
 ## containing the paper you are writing. Assuming you are using the
 ## rest of the toolchain here, you can use it to create .html, .tex,
@@ -68,5 +73,3 @@ clean:
 
 
 
-cnw.ipynb: cnw.md
-	jupytext --to notebook cnw.md
