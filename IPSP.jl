@@ -10,10 +10,10 @@ function IPSPinteractions(Stim1, Stim2, ES, TauSyn)
     WTS = [1 2 2 1];  #Runge-Kutta Coefficient weights
 
     # Predefine X, K and WTS for speed
-    X = Array{Float64,2}(undef, Total_Neurons, Last)
-    K = Array{Float64,2}(undef, Total_Neurons, 4)
-    Weights = Array{Float64,2}(undef, Total_Neurons, 4)
-
+    X = zeros(Total_Neurons, Last)
+    K = zeros(Total_Neurons, 4)
+    Weights = zeros(Total_Neurons, 4)
+    
     for NU = 1:Total_Neurons;  #Initialize
         Weights[NU, :] = WTS;  #Make into matrix for efficiency in main loop
     end
