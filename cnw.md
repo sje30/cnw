@@ -240,3 +240,4 @@ include("IPSP.jl")
 time, X = IPSPinteractions(1.1, 1.0, 5.0, 1.0)
 plot(time, X[ [1, 3], :]', label=["E1" "E3"], legend=:topleft)
 ```
+
