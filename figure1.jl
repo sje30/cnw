@@ -641,58 +641,6 @@ function izh_t()
 end
 
 
-izh_a()
-izh_b()
-izh_c()
-izh_d()
-
-izh_e()
-izh_f()
-izh_g()
-izh_h()
-
-izh_i()
-izh_j()
-izh_k()
-izh_l()
-
-izh_m()
-izh_n()
-izh_o()
-izh_p()
-
-
-izh_q()
-izh_r()
-izh_s()
-izh_t()
-
-izh_e()
-izh_f()
-izh_g()
-izh_h()
-
-izh_i()
-izh_j()
-izh_k()
-izh_l()
-
-izh_m()
-izh_n()
-izh_o()
-izh_p()
-
-
-izh_q()
-izh_r()
-izh_s()
-izh_t()
-
-
-
-
-
-
 p_a = izh_a();
 p_b = izh_b();
 p_c = izh_c();
