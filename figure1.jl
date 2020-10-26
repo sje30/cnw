@@ -32,7 +32,7 @@ function izh_a()
         push!(uu,u);
     end;
     plot(tspan,VV, title="(A) tonic spiking",
-         legend=false,
+         legend=false, axis=nothing,
          xlims=(0, tspan[end]), ylims=(-90,30));
     plot!([0,T1,T1,tspan[end]],-90.0 .+ [0,0,10,10])
 end
@@ -62,7 +62,7 @@ function izh_b()
         push!(uu,u);
     end;
     plot(tspan,VV, title="(B) phasic spiking",
-         legend=false,
+         legend=false, axis=nothing,
          xlims=(0, tspan[end]), ylims=(-90,30));
     plot!([0,T1,T1,tspan[end]],-90.0 .+ [0,0,10,10])
 end
@@ -92,13 +92,10 @@ function izh_c()
         end;
         push!(uu,u);
     end;
-    ax=axes[1,3]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
-    ax.set_title("(C) tonic bursting")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV, title="(C) tonic bursting",
+         legend=false, axis=nothing,
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
 end
 
 #(D) phasic bursting
@@ -125,13 +122,10 @@ function izh_d()
         end;
         push!(uu,u);
     end;
-    ax=axes[1,4]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
-    ax.set_title("(D) phasic bursting")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,title="(D) phasic bursting",
+         legend=false, axis=nothing,
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
 end
 
 
@@ -159,13 +153,10 @@ function izh_e()
         end;
         push!(uu,u);
     end;
-    ax=axes[2,1]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
-    ax.set_title("(E) mixed mode")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,    title="(E) mixed mode",
+         legend=false, axis=nothing,
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
 end
 
 #(F) spike freq. adapt
@@ -192,13 +183,11 @@ function izh_f()
         end;
         push!(uu,u);
     end;
-    ax=axes[2,2]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
-    ax.set_title("(F) spike freq. adapt")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         title="(F) spike freq. adapt",
+         legend=false, axis=nothing,
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,tspan[end]],-90.0 .+[0,0,10,10])
 end
 
 
@@ -226,13 +215,10 @@ function izh_g()
         end;
         push!(uu,u);
     end;
-    ax=axes[2,3]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,tspan[end],tspan[end]],-90.0 .+[0,0,20,0])
-    ax.set_title("(G) Class 1 excitable")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,title="(G) Class 1 excitable",
+         legend=false, axis=nothing,
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,tspan[end],tspan[end]],-90.0 .+[0,0,20,0])
 end
 
 
@@ -260,13 +246,11 @@ function izh_h()
         end;
         push!(uu,u);
     end;
-    ax=axes[2,4]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,tspan[end],tspan[end]],-90.0 .+[0,0,20,0])
-    ax.set_title("(H) Class 2 excitable")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing,
+         title="(H) Class 2 excitable",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,tspan[end],tspan[end]],-90.0 .+[0,0,20,0])
 end
 
 
@@ -294,13 +278,10 @@ function izh_i()
         end;
         push!(uu,u);
     end;
-    ax=axes[3,1]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,T1 + 3,T1+3,tspan[end]],-90.0 .+[0,0,10,10,0,0])
-    ax.set_title("(I) spike latency")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing,title="(I) spike latency",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,T1 + 3,T1+3,tspan[end]],-90.0 .+[0,0,10,10,0,0])
 end
 
 
@@ -328,14 +309,11 @@ function izh_j()
         end;
         push!(uu,u);
     end;
-    ax=axes[3,2]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,T1+5,T1+5,tspan[end]],-90.0 .+[0,0,10,10,0,0])
-    ax.plot(tspan[220:end],-10 .+ 20*(VV[220:end] .- mean(VV)));
-    ax.set_title("(J) subthreshold osc.")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing, title="(J) subthreshold osc.",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,T1+5,T1+5,tspan[end]],-90.0 .+[0,0,10,10,0,0])
+    plot!(tspan[220:end],-10 .+ 20*(VV[220:end] .- mean(VV)));
 end
 
 
@@ -366,13 +344,10 @@ function izh_k()
         end;
         push!(uu,u);
     end;
-    ax=axes[3,3]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,(T1+8),(T1+8),T2,T2,(T2+8),(T2+8),T3,T3,(T3+8),(T3+8),T4,T4,(T4+8),(T4+8),tspan[end]],-90.0 .+[0,0,10,10,0,0,10,10,0,0,10,10,0,0,10,10,0,0]);
-    ax.set_title("(K) resonator")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing,    title="(K) resonator",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,(T1+8),(T1+8),T2,T2,(T2+8),(T2+8),T3,T3,(T3+8),(T3+8),T4,T4,(T4+8),(T4+8),tspan[end]],-90.0 .+[0,0,10,10,0,0,10,10,0,0,10,10,0,0,10,10,0,0]);
 end
 
 
@@ -403,13 +378,10 @@ function izh_l()
         end;
         push!(uu,u);
     end;
-    ax=axes[3,4]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,(T1+2),(T1+2),T2,T2,(T2+2),(T2+2),T3,T3,(T3+2),(T3+2),T4,T4,(T4+2),(T4+2),tspan[end]],-90.0 .+[0,0,10,10,0,0,10,10,0,0,10,10,0,0,10,10,0,0]);
-    ax.set_title("(L) integrator")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing, title="(L) integrator",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,(T1+2),(T1+2),T2,T2,(T2+2),(T2+2),T3,T3,(T3+2),(T3+2),T4,T4,(T4+2),(T4+2),tspan[end]],-90.0 .+[0,0,10,10,0,0,10,10,0,0,10,10,0,0,10,10,0,0]);
 end
 
 
@@ -437,13 +409,10 @@ function izh_m()
         end;
         push!(uu,u);
     end;
-    ax=axes[4,1]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,(T1+5),(T1+5),tspan[end]], -85.0 .+ [0,0,-5,-5,0,0]);
-    ax.set_title("(M) rebound spike")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing,    title="(M) rebound spike",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,(T1+5),(T1+5),tspan[end]], -85.0 .+ [0,0,-5,-5,0,0]);
 end
 
 
@@ -471,13 +440,10 @@ function izh_n()
         end;
         push!(uu,u);
     end;
-    ax=axes[4,2]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,(T1+5),(T1+5),tspan[end]],-85.0 .+ [0,0,-5,-5,0,0]);
-    ax.set_title("(N) rebound burst")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing,    title="(N) rebound burst",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,(T1+5),(T1+5),tspan[end]],-85.0 .+ [0,0,-5,-5,0,0]);
 end
 
 
@@ -506,14 +472,11 @@ function izh_o()
         end;
         push!(uu,u);
     end;
-    ax=axes[4,3]
-    ax.plot(tspan,VV)
-    ax.plot([0,10,10,15,15,70,70,75,75,80,80,85,85,tspan[end]],
+    plot(tspan,VV,
+         legend=false, axis=nothing,     title="(O) thresh. variability",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,10,10,15,15,70,70,75,75,80,80,85,85,tspan[end]],
             -85.0 .+ [0,0,5,5,0,0,-5,-5,0,0,5,5,0,0]);
-    ax.set_title("(O) thresh. variability")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
 end
 
 
@@ -542,13 +505,11 @@ function izh_p()
         end;
         push!(uu,u);
     end;
-    ax=axes[4,4]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1,T1,(T1+5),(T1+5),T2,T2,(T2+5),(T2+5),tspan[end]],-90.0 .+[0,0,10,10,0,0,10,10,0,0]);
-    ax.set_title("(P) bistability")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing,
+         title="(P) bistability",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1,T1,(T1+5),(T1+5),T2,T2,(T2+5),(T2+5),tspan[end]],-90.0 .+[0,0,10,10,0,0,10,10,0,0]);
 end
 
 
@@ -576,13 +537,11 @@ function izh_q()
         end;
         push!(uu,u);
     end;
-    ax=axes[5,1]
-    ax.plot(tspan,VV)
-    ax.plot([0,T1-1,T1-1,T1+1,T1+1,tspan[end]],-90.0 .+[0,0,10,10,0,0]);
-    ax.set_title("(Q) DAP         ")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing,
+         title="(Q) DAP         ",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,T1-1,T1-1,T1+1,T1+1,tspan[end]],-90.0 .+[0,0,10,10,0,0]);
 end
 
 
@@ -614,13 +573,10 @@ function izh_r()
         push!(uu,u);
         push!(II,I);
     end;
-    ax=axes[5,2]
-    ax.plot(tspan,VV)
-    ax.plot(tspan,II*1.5 .- 90.0);
-    ax.set_title("(R) accomodation")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing,    title="(R) accomodation",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot(tspan,II*1.5 .- 90.0);
 end
 
 
@@ -647,13 +603,10 @@ function izh_s()
         end;
         push!(uu,u);
     end;
-    ax=axes[5,3]
-    ax.plot(tspan,VV)
-    ax.plot([0,50,50,250,250,tspan[end]], -80.0 .+ [0,0,-10,-10,0,0]);
-    ax.set_title("(S) inh. induced sp.")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
+    plot(tspan,VV,
+         legend=false, axis=nothing, title="(S) inh. induced sp.",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,50,50,250,250,tspan[end]], -80.0 .+ [0,0,-10,-10,0,0]);
 end
 
 
@@ -680,14 +633,11 @@ function izh_t()
         end;
         push!(uu,u);
     end;
-    ax=axes[5,4]
-    ax.plot(tspan,VV)
-    ax.plot([0,50,50,250,250,tspan[end]],
+    plot(tspan,VV,
+         legend=false, axis=nothing,    title="(T) inh. induced brst.",
+         xlims=(0, tspan[end]), ylims=(-90,30));
+    plot!([0,50,50,250,250,tspan[end]],
             -80.0 .+ [0,0,-10,-10,0,0]);
-    ax.set_title("(T) inh. induced brst.")
-    ax.set_xlim([0,tspan[end]])
-    ax.set_ylim([-90,30])
-    ax.set_axis_off();
 end
 
 
@@ -717,8 +667,65 @@ izh_r()
 izh_s()
 izh_t()
 
+izh_e()
+izh_f()
+izh_g()
+izh_h()
+
+izh_i()
+izh_j()
+izh_k()
+izh_l()
+
+izh_m()
+izh_n()
+izh_o()
+izh_p()
 
 
-fig.subplots_adjust(hspace=0.35);
+izh_q()
+izh_r()
+izh_s()
+izh_t()
+
+
+
+
+
+
+p_a = izh_a();
+p_b = izh_b();
+p_c = izh_c();
+p_d = izh_d();
+
+p_e = izh_e()
+p_f = izh_f()
+p_g = izh_g()
+p_h = izh_h()
+
+p_i = izh_i()
+p_j = izh_j()
+p_k = izh_k()
+p_l = izh_l()
+
+p_m = izh_m()
+p_n = izh_n()
+p_o = izh_o()
+p_p = izh_p()
+
+p_q = izh_q()
+p_r = izh_r()
+p_s = izh_s()
+p_t = izh_t()
+
+
+l = @layout [a b c d; e f g h; i j k l; m n o p; q r s t]
+
+plot(p_a, p_b, p_c, p_d,
+     p_e, p_f, p_g, p_h,
+     p_i, p_j, p_k, p_l,
+     p_m, p_n, p_o, p_p,
+     p_q, p_r, p_s, p_t,
+     layout = l)
 
 #set(gcf,'Units','normalized','Position',[0.3 0.1 0.6 0.8]);
