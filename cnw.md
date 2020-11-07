@@ -113,7 +113,7 @@ Run with default I=0.1 and then compare with I=10.
 
 ```julia
 include("hhode.jl")
-plot_hh(i=1.0)
+plot_hh(i=0.1)
 ```
 
 ## Exercises
@@ -121,7 +121,8 @@ plot_hh(i=1.0)
 1. Can you find the critical value of I where you first get a spike
 generated?
 
-2. Can you work out the units on I (check equation 1 and Table 1 of spa3)?
+2. Can you work out the units on I (check equation 1 and Table 1 of
+   hh_maths.pdf )?
 
 3. Estimate the firing rate (in Hz) for the model as you vary I from 0
    to 500.  Can you plot a graph of it?  
