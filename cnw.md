@@ -25,8 +25,9 @@ back the way we came.
 - Break at 12:55-13:05; bathrooms outside; cafe in central core
 upstairs open til 16:00.
 - Consider pairing up with someone else if you want to focus on the
-science rather than difficulties of learning matlab; there is no time
-today to give an introduction to matlab.
+science rather than difficulties of running the code; there is no time
+today to give an introduction to Julia.  (You should be able to
+read the code, it looks fairly similar to R and matlab).
 
 # Introduction
 
@@ -79,7 +80,7 @@ Known solution:
 
 $x(t) = \exp(-t) + t$
 
-We will open [euler1.jl](euler1.jl) in matlab and then run the script by
+We will run the script by
 typing Control and Enter on include line below.
 <!-- #endregion -->
 
