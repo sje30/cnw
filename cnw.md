@@ -100,7 +100,7 @@ Its all in the channels!
 
 ## Reminder of the mathematics
 
-See [assignment 3](http://www.damtp.cam.ac.uk/user/sje30/teaching/r/spa3-2014.pdf)
+See [hh_maths.pdf](hh_maths.pdf)
 
 
 Julia has built-in functions for efficient numerical integration of
